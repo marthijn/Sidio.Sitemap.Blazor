@@ -26,7 +26,7 @@ Add the following attribute to your components (pages) to include them in the si
 @attribute [Sitemap("/custom-url")]
 
 @* add change frequency, priority and last modified date *@
-@attribute [Sitemap(null, ChangeFrequency.Daily, 0.5, DateTime.Now)]
+@attribute [Sitemap(ChangeFrequency.Daily, 0.5, "2024-01-01")]
 ```
 
 The sitemap is accessible at `[domain]/sitemap.xml`.

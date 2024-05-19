@@ -18,25 +18,58 @@ public sealed class SitemapAttribute : Attribute
     /// <summary>
     /// Initializes a new instance of the <see cref="SitemapAttribute"/> class.
     /// </summary>
-    /// <param name="url"></param>
+    /// <param name="url">The URL.</param>
     public SitemapAttribute(string url)
-        : this(url, null)
     {
+        Url = url;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SitemapAttribute"/> class.
     /// </summary>
-    /// <param name="url"></param>
-    /// <param name="changeFrequency"></param>
-    /// <param name="priority"></param>
-    /// <param name="lastModified"></param>
-    public SitemapAttribute(string?  url = null, ChangeFrequency? changeFrequency = null, decimal? priority = null, DateTime? lastModified = null)
+    /// <param name="changeFrequency">The change frequency.</param>
+    public SitemapAttribute(ChangeFrequency changeFrequency)
+    {
+        ChangeFrequency = changeFrequency;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SitemapAttribute"/> class.
+    /// </summary>
+    /// <param name="changeFrequency">The change frequency.</param>
+    /// <param name="priority">The priority.</param>
+    public SitemapAttribute(ChangeFrequency changeFrequency, double priority)
+    {
+        ChangeFrequency = changeFrequency;
+        Priority = (decimal)priority;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SitemapAttribute"/> class.
+    /// </summary>
+    /// <param name="changeFrequency">The change frequency.</param>
+    /// <param name="priority">The priority.</param>
+    /// <param name="lastModified">Last modified date.</param>
+    public SitemapAttribute(ChangeFrequency changeFrequency, double priority, string lastModified)
+    {
+        ChangeFrequency = changeFrequency;
+        Priority = (decimal)priority;
+        LastModified = DateTime.Parse(lastModified);
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SitemapAttribute"/> class.
+    /// </summary>
+    /// <param name="url">The URL.</param>
+    /// <param name="changeFrequency">The change frequency.</param>
+    /// <param name="priority">The priority.</param>
+    /// <param name="lastModified">Last modified date.</param>
+    public SitemapAttribute(string  url, ChangeFrequency changeFrequency, double priority, string lastModified)
     {
         Url = url;
         ChangeFrequency = changeFrequency;
-        Priority = priority;
-        LastModified = lastModified;
+        Priority = (decimal)priority;
+        LastModified = DateTime.Parse(lastModified);
     }
 
     /// <summary>
