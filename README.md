@@ -29,6 +29,8 @@ Add the following attribute to your components (pages) to include them in the si
 @attribute [Sitemap(null, ChangeFrequency.Daily, 0.5, DateTime.Now)]
 ```
 
+The sitemap is accessible at `[domain]/sitemap.xml`.
+
 # FAQ
 
 * Exception: `Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Sidio.Sitemap.AspNetCore.HttpContextBaseUrlProvider'.`
