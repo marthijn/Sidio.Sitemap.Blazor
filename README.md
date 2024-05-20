@@ -17,6 +17,12 @@ builder.Services
     .AddHttpContextAccessor()
     .AddDefaultSitemapServices<HttpContextBaseUrlProvider>();
 ```
+
+Register the middleware:
+```csharp
+app.UseSitemap();
+```
+
 Add the following attribute to your components (pages) to include them in the sitemap:
 ```cshtml
 @* default *@
