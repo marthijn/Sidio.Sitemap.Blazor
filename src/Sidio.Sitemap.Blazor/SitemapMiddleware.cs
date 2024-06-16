@@ -49,10 +49,10 @@ internal sealed class SitemapMiddleware
         foreach (var type in types)
         {
             var sitemapAttribute = type.GetCustomAttribute<SitemapAttribute>();
-            var routeAttribute = type.GetCustomAttribute<RouteAttribute>();
-            if (sitemapAttribute != null && routeAttribute != null)
+            var routeAttributes = type.GetCustomAttributes<RouteAttribute>();
+            if (sitemapAttribute != null)
             {
-                nodes.Add(CreateNode(sitemapAttribute, routeAttribute));
+                nodes.AddRange(routeAttributes.Select(routeAttribute => CreateNode(sitemapAttribute, routeAttribute)));
             }
         }
 
