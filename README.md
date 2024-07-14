@@ -18,8 +18,10 @@ builder.Services
     .AddDefaultSitemapServices<HttpContextBaseUrlProvider>();
 ```
 
-Register the middleware:
+Register the middleware. Make sure to choose the correct namespace.
 ```csharp
+using Sidio.Sitemap.Blazor;
+
 app.UseSitemap();
 ```
 
