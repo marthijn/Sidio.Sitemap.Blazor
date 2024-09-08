@@ -1,5 +1,5 @@
 # Sidio.Sitemap.Blazor
-Sidio.Sitemap.Blazor is a lightweight .NET library for generating sitemaps in Blazor applications.
+Sidio.Sitemap.Blazor is a lightweight .NET library for generating sitemaps in Blazor server applications.
 
 [![build](https://github.com/marthijn/Sidio.Sitemap.Blazor/actions/workflows/build.yml/badge.svg)](https://github.com/marthijn/Sidio.Sitemap.Blazor/actions/workflows/build.yml)
 [![NuGet Version](https://img.shields.io/nuget/v/Sidio.Sitemap.Blazor)](https://www.nuget.org/packages/Sidio.Sitemap.Blazor/)
