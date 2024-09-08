@@ -9,6 +9,18 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      tests:
+        patterns:
+          - "AutoFixture"
+          - "FluentAssertions"
+          - "xunit*"
+          - "*Test*"
+          - "coverlet*"
+          - "Moq"
+      microsoft:
+        patterns:
+          - "Microsoft*"
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
