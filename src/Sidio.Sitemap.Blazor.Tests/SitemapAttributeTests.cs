@@ -6,6 +6,17 @@ namespace Sidio.Sitemap.Blazor.Tests;
 public sealed class SitemapAttributeTests
 {
     private readonly Fixture _fixture = new();
+    
+    [Fact]
+    public void Constructor_EmptyConstructor_ShouldCreateInstance()
+    {
+        // act
+        var sitemapAttribute = new SitemapAttribute();
+
+        // assert
+        sitemapAttribute.Should().NotBeNull();
+        sitemapAttribute.Url.Should().BeNull();
+    }
 
     [Fact]
     public void Constructor_GivenUrl_ShouldCreateInstance()
