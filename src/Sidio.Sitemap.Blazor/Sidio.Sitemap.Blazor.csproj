@@ -31,7 +31,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Sidio.Sitemap.AspNetCore" Version="2.7.1" />
+      <PackageReference Include="Sidio.Sitemap.AspNetCore" Version="2.7.2" />
     </ItemGroup>
 
     <ItemGroup>
