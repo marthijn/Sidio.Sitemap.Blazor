@@ -13,11 +13,12 @@ updates:
       tests:
         patterns:
           - "AutoFixture"
-          - "FluentAssertions"
+          - "AwesomeAssertions"
           - "xunit*"
           - "*Test*"
           - "coverlet*"
           - "Moq"
+          - "Microsoft.NET.Test.Sdk"
       microsoft:
         patterns:
           - "Microsoft*"
