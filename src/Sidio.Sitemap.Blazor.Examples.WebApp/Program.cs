@@ -1,5 +1,6 @@
 using Sidio.Sitemap.AspNetCore;
 using Sidio.Sitemap.Blazor;
+using Sidio.Sitemap.Blazor.Examples.WebApp;
 using Sidio.Sitemap.Blazor.Examples.WebApp.Components;
 using Sidio.Sitemap.Core.Services;
 
@@ -11,7 +12,8 @@ builder.Services.AddRazorComponents()
 
 builder.Services
     .AddHttpContextAccessor()
-    .AddDefaultSitemapServices<HttpContextBaseUrlProvider>();
+    .AddDefaultSitemapServices<HttpContextBaseUrlProvider>()
+    .AddCustomSitemapNodeProvider<CustomSitemapNodeProvider>();
 
 var app = builder.Build();
 

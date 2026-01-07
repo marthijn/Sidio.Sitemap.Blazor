@@ -3,6 +3,7 @@ using System.Text;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Sidio.Sitemap.AspNetCore.Middleware;
 using Sidio.Sitemap.Core;
 using Sidio.Sitemap.Core.Services;
 
@@ -30,6 +31,14 @@ internal sealed class SitemapMiddleware
                                         new ComponentBaseProvider();
 
             var sitemap = CreateSitemap(componentBaseProvider);
+
+            // get custom nodes
+            var customNodeProvider = context.RequestServices.GetService<ICustomSitemapNodeProvider>();
+            if (customNodeProvider != null)
+            {
+                sitemap.Add(customNodeProvider.GetNodes());
+            }
+
             var xml = await sitemapService.SerializeAsync(sitemap);
 
             context.Response.ContentType = ContentType;
