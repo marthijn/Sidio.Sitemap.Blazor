@@ -47,10 +47,29 @@ Add the following attribute to your components (pages) to include them in the si
 
 The sitemap is accessible at `[domain]/sitemap.xml`.
 
+### Providing additional nodes
+You can provide additional sitemap nodes by implementing the `ISitemapNodeProvider` interface. The middleware will
+detect and use your implementation automatically.
+```csharp
+// Implement the ICustomSitemapNodeProvider interface
+public class MyCustomSitemapNodeProvider : ICustomSitemapNodeProvider
+{
+    public IEnumerable<SitemapNode> GetNodes()
+    {
+        return new List<SitemapNode> { new("/test") };
+    }
+}
+
+// Register the provider in DI
+services.AddCustomSitemapNodeProvider<MyCustomSitemapNodeProvider>();
+```
+
 # FAQ
 
 * Exception: `Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Sidio.Sitemap.AspNetCore.HttpContextBaseUrlProvider'.`
     * Solution: call `services.AddHttpContextAccessor();` to register the `IHttpContextAccessor`.
+* Build error: `The call is ambiguous between the following methods or properties: 'Sidio.Sitemap.Blazor.ApplicationBuilderExtensions.UseSitemap(...)' and 'Sidio.Sitemap.AspNetCore.Middleware.ApplicationBuilderExtensions.UseSitemap(...)'`
+    * Solution: make sure to use the correct namespace: `using Sidio.Sitemap.Blazor;`, and _not_ `using Sidio.Sitemap.AspNetCore.Middleware;`.
 
 # See also
 * [Sidio.Sitemap.Core package](https://github.com/marthijn/Sidio.Sitemap.Core)
