@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Sidio.Sitemap.AspNetCore.Middleware;
 using Sidio.Sitemap.Core;
 
 namespace Sidio.Sitemap.Blazor.Tests;
@@ -37,7 +36,7 @@ public sealed class ServiceCollectionExtensionsTests
         // assert
         var serviceDescriptor = services.FirstOrDefault(s => s.ServiceType == typeof(ICustomSitemapNodeProvider));
         serviceDescriptor.Should().NotBeNull();
-        serviceDescriptor!.Lifetime.Should().Be(serviceLifetime);
+        serviceDescriptor.Lifetime.Should().Be(serviceLifetime);
     }
 
     [Fact]

@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Sidio.Sitemap.AspNetCore.Middleware;
 
 namespace Sidio.Sitemap.Blazor;
 
@@ -20,8 +19,8 @@ public static class ServiceCollectionExtensions
         ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
         where T : class, ICustomSitemapNodeProvider
     {
-        // this function calls the AspNetCore version to avoid namespace conflicts in Program.cs files.
-        Sidio.Sitemap.AspNetCore.Middleware.ServiceCollectionExtensions.AddCustomSitemapNodeProvider<T>(serviceCollection, serviceLifetime);
+        var serviceDescriptor = new ServiceDescriptor(typeof(ICustomSitemapNodeProvider), typeof(T), serviceLifetime);
+        serviceCollection.Add(serviceDescriptor);
         return serviceCollection;
     }
 }
