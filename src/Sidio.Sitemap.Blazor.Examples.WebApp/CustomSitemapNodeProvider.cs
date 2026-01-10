@@ -1,4 +1,3 @@
-using Sidio.Sitemap.AspNetCore.Middleware;
 using Sidio.Sitemap.Core;
 
 namespace Sidio.Sitemap.Blazor.Examples.WebApp;

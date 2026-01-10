@@ -63,6 +63,13 @@ public class MyCustomSitemapNodeProvider : ICustomSitemapNodeProvider
 // Register the provider in DI
 services.AddCustomSitemapNodeProvider<MyCustomSitemapNodeProvider>();
 ```
+# Upgrade to v2.x
+In v2.x the reference to `Sidio.Sitemap.AspNetCore` is replaced by `Sidio.Sitemap.Core`. This reduces dependencies and makes the library
+more lightweight.
+
+Breaking changes:
+* The `ICustomSitemapNodeProvider` now exists in namespace `Sidio.Sitemap.Blazor`.
+* References or using-statements to `Sidio.Sitemap.AspNetCore` can be removed.
 
 # FAQ
 
