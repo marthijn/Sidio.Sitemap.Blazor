@@ -3,7 +3,6 @@ using System.Text;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Sidio.Sitemap.AspNetCore.Middleware;
 using Sidio.Sitemap.Core;
 using Sidio.Sitemap.Core.Services;
 

@@ -64,11 +64,31 @@ public class MyCustomSitemapNodeProvider : ICustomSitemapNodeProvider
 services.AddCustomSitemapNodeProvider<MyCustomSitemapNodeProvider>();
 ```
 
+# Security
+The `HttpContextBaseUrlProvider` uses `Request.Host` which is not considered safe by default. To mitigate this, use one of the following approaches:
+* Implement a custom `IBaseUrlProvider` that uses a safe way to determine the base URL, for example by using `IHttpContextAccessor` and validating the host against a whitelist, or by loading a base URL from configuration.
+* Configure Forwarded Headers middleware:
+```csharp
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto,
+    KnownProxies = { IPAddress.Parse("IP_ADDRESS_OF_YOUR_PROXY") }
+});
+```
+
+# Upgrade to v2.x
+In v2.x the reference to `Sidio.Sitemap.AspNetCore` is replaced by `Sidio.Sitemap.Core`. This reduces dependencies and makes the library
+more lightweight.
+
+Breaking changes:
+* The `ICustomSitemapNodeProvider` now exists in namespace `Sidio.Sitemap.Blazor`.
+* References or using-statements to `Sidio.Sitemap.AspNetCore` can be removed.
+
 # FAQ
 
-* Exception: `Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Sidio.Sitemap.AspNetCore.HttpContextBaseUrlProvider'.`
+* Exception: `Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Sidio.Sitemap.Blazor.HttpContextBaseUrlProvider'.`
     * Solution: call `services.AddHttpContextAccessor();` to register the `IHttpContextAccessor`.
-* Build error: `The call is ambiguous between the following methods or properties: 'Sidio.Sitemap.Blazor.ApplicationBuilderExtensions.UseSitemap(...)' and 'Sidio.Sitemap.AspNetCore.Middleware.ApplicationBuilderExtensions.UseSitemap(...)'`
+* Build error (v1.x): `The call is ambiguous between the following methods or properties: 'Sidio.Sitemap.Blazor.ApplicationBuilderExtensions.UseSitemap(...)' and 'Sidio.Sitemap.AspNetCore.Middleware.ApplicationBuilderExtensions.UseSitemap(...)'`
     * Solution: make sure to use the correct namespace: `using Sidio.Sitemap.Blazor;`, and _not_ `using Sidio.Sitemap.AspNetCore.Middleware;`.
 
 # See also
