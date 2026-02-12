@@ -63,6 +63,19 @@ public class MyCustomSitemapNodeProvider : ICustomSitemapNodeProvider
 // Register the provider in DI
 services.AddCustomSitemapNodeProvider<MyCustomSitemapNodeProvider>();
 ```
+
+# Security
+The `HttpContextBaseUrlProvider` uses `Request.Host` which is not considered safe by default. To mitigate this, use one of the following approaches:
+* Implement a custom `IBaseUrlProvider` that uses a safe way to determine the base URL, for example by using `IHttpContextAccessor` and validating the host against a whitelist, or by loading a base URL from configuration.
+* Configure Forwarded Headers middleware:
+```csharp
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto,
+    KnownProxies = { IPAddress.Parse("IP_ADDRESS_OF_YOUR_PROXY") }
+});
+```
+
 # Upgrade to v2.x
 In v2.x the reference to `Sidio.Sitemap.AspNetCore` is replaced by `Sidio.Sitemap.Core`. This reduces dependencies and makes the library
 more lightweight.
