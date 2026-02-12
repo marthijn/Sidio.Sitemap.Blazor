@@ -73,9 +73,9 @@ Breaking changes:
 
 # FAQ
 
-* Exception: `Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Sidio.Sitemap.AspNetCore.HttpContextBaseUrlProvider'.`
+* Exception: `Unable to resolve service for type 'Microsoft.AspNetCore.Http.IHttpContextAccessor' while attempting to activate 'Sidio.Sitemap.Blazor.HttpContextBaseUrlProvider'.`
     * Solution: call `services.AddHttpContextAccessor();` to register the `IHttpContextAccessor`.
-* Build error: `The call is ambiguous between the following methods or properties: 'Sidio.Sitemap.Blazor.ApplicationBuilderExtensions.UseSitemap(...)' and 'Sidio.Sitemap.AspNetCore.Middleware.ApplicationBuilderExtensions.UseSitemap(...)'`
+* Build error (v1.x): `The call is ambiguous between the following methods or properties: 'Sidio.Sitemap.Blazor.ApplicationBuilderExtensions.UseSitemap(...)' and 'Sidio.Sitemap.AspNetCore.Middleware.ApplicationBuilderExtensions.UseSitemap(...)'`
     * Solution: make sure to use the correct namespace: `using Sidio.Sitemap.Blazor;`, and _not_ `using Sidio.Sitemap.AspNetCore.Middleware;`.
 
 # See also
