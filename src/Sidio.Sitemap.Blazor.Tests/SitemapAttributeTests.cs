@@ -68,7 +68,7 @@ public sealed class SitemapAttributeTests
         // arrange
         var changeFrequency = _fixture.Create<ChangeFrequency>();
         var priority = _fixture.Create<double>();
-        var lastModified = _fixture.Create<DateTime>().ToString(CultureInfo.CurrentCulture);
+        var lastModified = _fixture.Create<DateTime>().ToString("yyyy-MM-ddTHH:mm:ssK", CultureInfo.InvariantCulture);
 
         // act
         var sitemapAttribute = new SitemapAttribute(changeFrequency, priority, lastModified);
@@ -86,7 +86,7 @@ public sealed class SitemapAttributeTests
         // arrange
         var changeFrequency = _fixture.Create<ChangeFrequency>();
         var priority = _fixture.Create<double>();
-        var lastModified = _fixture.Create<DateTime>().ToString(CultureInfo.CurrentCulture);
+        var lastModified = _fixture.Create<DateTime>().ToString("yyyy-MM-ddTHH:mm:ssK", CultureInfo.InvariantCulture);
         var url = _fixture.Create<string>();
 
         // act
