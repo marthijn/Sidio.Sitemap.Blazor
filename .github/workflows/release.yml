@@ -24,15 +24,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Setup dotnet 8.x
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 8.x
       - name: Setup dotnet 9.x
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 9.x
       - name: Setup dotnet 10.x
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.x
       - name: Set RELEASE_VERSION variable from tag
