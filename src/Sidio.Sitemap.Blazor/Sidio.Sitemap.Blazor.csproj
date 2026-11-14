@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <TargetFrameworks>net8.0;net9.0;net10.0;net11.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <Authors>Marthijn van den Heuvel,Sidio</Authors>
-        <Copyright>Copyright (c) 2024-2025 Marthijn van den Heuvel</Copyright>
+        <Copyright>Copyright (c) 2024-2026 Marthijn van den Heuvel</Copyright>
         <PackageId>Sidio.Sitemap.Blazor</PackageId>
         <RepositoryType>git</RepositoryType>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -27,11 +27,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.403">
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="11.0.100">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Sidio.Sitemap.Core" Version="3.1.1" />
+      <PackageReference Include="Sidio.Sitemap.Core" Version="3.2.0" />
     </ItemGroup>
 
     <ItemGroup>
